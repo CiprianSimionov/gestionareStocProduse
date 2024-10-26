@@ -1,10 +1,10 @@
-"""implementam crud pentru tabela products"""
+"""implement crud methods for table products"""
 from db.crud.interface_crud import CrudABC
 
 class ProductsDB(CrudABC):
 
     def __init__(self):
-        super().__init__
+        super().__init__()
 
     def __enter__(self):
         return self
@@ -15,8 +15,8 @@ class ProductsDB(CrudABC):
     def create(self, date_de_intrare_create):
         SQL_QUERY = """
         INSERT INTO products(
-        product_name, description, ingredients, price, weight, quantity)
-        VALUES (:product_name, :description, :ingredients, :price, :weight, :quantity)
+        id, product_name, description, ingredients, price, weight, quantity)
+        VALUES (:id, :product_name, :description, :ingredients, :price, :weight, :quantity)
         """
 
         cursor = self.connection.cursor()
@@ -71,7 +71,7 @@ class ProductsDB(CrudABC):
 
         cursor = self.connection.cursor()
         date_de_intrare_update["id"] = product_id
-        cursor.execute(SQL_QUERY,date_de_intrare_update)
+        cursor.execute(SQL_QUERY, date_de_intrare_update)
         self.connection.commit()
 
 
