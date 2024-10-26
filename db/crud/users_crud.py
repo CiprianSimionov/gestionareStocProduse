@@ -1,10 +1,10 @@
-"""implementam crud pentru tabela users"""
+"""implement crud methods for table users"""
 from db.crud.interface_crud import CrudABC
 
 class UsersDB(CrudABC):
 
 
-    def create(self,date_de_intrare_create):
+    def create(self, date_de_intrare_create):
         SQL_QUERY = """
             INSERT INTO users(
             id, username, first_name, last_name, email, password) 
@@ -19,6 +19,7 @@ class UsersDB(CrudABC):
         SQL_QUERY = " SELECT * FROM users "
 
         value = ""
+
         if id:
             SQL_QUERY += "WHERE id = ?;"
             value = id
@@ -52,6 +53,10 @@ class UsersDB(CrudABC):
     def update(self, date_de_intrare_update):
         pass
 
-
     def delete(self, id):
-        pass
+        SQL_QUERY = """
+        DELETE FROM users where id = ?;
+        """
+        cursor = self.connection.cursor()
+        cursor.execute(SQL_QUERY, (id,))
+        self.connection.commit()
