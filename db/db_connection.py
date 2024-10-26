@@ -1,16 +1,16 @@
-"""cream conexiunea catre baza de date"""
+"""create connection to database"""
 
 import sqlite3
 
 PATH_DB = "gestionare_stoc_produse.db"
 
 
-def get_db_connection(db_path = PATH_DB):
+def get_db_connection(db_path=PATH_DB):
     connection = sqlite3.connect(db_path)
     return connection
 
 
-def create_database(db_path = PATH_DB):
+def create_database(db_path=PATH_DB):
     connection = sqlite3.connect(db_path)
     create_tables(connection)
 
