@@ -1,4 +1,5 @@
 """implement crud methods for table products"""
+
 from db.crud.interface_crud import CrudABC
 
 class ProductsDB(CrudABC):
