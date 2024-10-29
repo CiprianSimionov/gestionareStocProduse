@@ -1,4 +1,4 @@
-"""cream modelul(obiectul) pentru aplicatia noastra(gestionare stoc produse"""
+"""Create model(object) for current application(GestionareStocProduse)"""
 from db.crud.products_crud import ProductsDB
 import uuid
 
@@ -44,10 +44,10 @@ class Product:
         }
 
     def __repr__(self):
-        return (f"Produsul are id-ul: {self.id} \n"
-                f"Numele produsului este: {self.product_name} \n"
-                f"Descrierea produsului: {self.description} \n"
-                f"Ingredientele produsului: {self.ingredients} \n"
-                f"Pretul produsului: {self.price} \n"
-                f"Greutatea produsului: {self.weight} \n"
-                f"Cantitatea de produs: {self.quantity}")
+        return (f"Product id: {self.id} \n"
+                f"Product name: {self.product_name} \n"
+                f"Product description: {self.description} \n"
+                f"Product ingredients: {self.ingredients} \n"
+                f"Product price: {self.price} \n"
+                f"Product weight: {self.weight} \n"
+                f"Product quantity: {self.quantity}")
