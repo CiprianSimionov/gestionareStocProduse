@@ -5,7 +5,7 @@ from db.crud.interface_crud import CrudABC
 class ProductsDB(CrudABC):
 
     def __init__(self):
-        super().__init__()
+        super().__init__() # inherits constructor from class CrudABC in order to close db connection
 
     def __enter__(self):
         return self
@@ -13,6 +13,7 @@ class ProductsDB(CrudABC):
     def __exit__(self, exc_type, exc_val, exc_tb):
         if self.connection:
             self.connection.close()
+
     def create(self, date_de_intrare_create):
         SQL_QUERY = """
         INSERT INTO products(
@@ -59,16 +60,15 @@ class ProductsDB(CrudABC):
         return product_json
 
 
-
     def update(self, date_de_intrare_update, product_id):
         SQL_QUERY = """
         UPDATE products SET product_name=:product_name, description=:description, ingredients=:ingredients, price=:price, weight=:weight, quantity=:quantity
         WHERE id=:id;
         """
 
-        #product_name (numele coloanei)
-        # =: semn de atribuire
-        #product_name atribuit (parametri)
+        #product_name (colomn name)
+        # =: assigning sign
+        #product_name assign (parameters)
 
         cursor = self.connection.cursor()
         date_de_intrare_update["id"] = product_id
